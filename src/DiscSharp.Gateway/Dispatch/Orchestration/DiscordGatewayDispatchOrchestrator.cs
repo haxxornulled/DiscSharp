@@ -35,7 +35,9 @@ public sealed class DiscordGatewayDispatchOrchestrator : IDiscordGatewayDispatch
         _logger = logger;
     }
 
-    /// <inheritdoc />
+    /// <summary>
+    /// Dispatches a typed gateway envelope to all matching handlers using the configured execution mode and failure policy.
+    /// </summary>
     public async ValueTask<GatewayDispatchOrchestrationResult> DispatchAsync(
         GatewayDispatchEnvelope envelope,
         CancellationToken cancellationToken)

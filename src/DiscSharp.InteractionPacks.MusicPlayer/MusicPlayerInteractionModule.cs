@@ -32,7 +32,9 @@ public sealed class MusicPlayerInteractionModule : IDiscordInteractionModule
     /// <inheritdoc />
     public int Order => 1_100;
 
-    /// <inheritdoc />
+    /// <summary>
+    /// Determines whether this module can handle the supplied Music Player interaction.
+    /// </summary>
     public bool CanHandle(DiscordInteractionEnvelope interaction)
     {
         ArgumentNullException.ThrowIfNull(interaction);
@@ -46,7 +48,9 @@ public sealed class MusicPlayerInteractionModule : IDiscordInteractionModule
             && string.Equals(customId.Module, Module, StringComparison.Ordinal);
     }
 
-    /// <inheritdoc />
+    /// <summary>
+    /// Handles a Music Player interaction by invoking the corresponding application service and translating the result into an interaction response.
+    /// </summary>
     public async ValueTask<InteractionModuleResult> HandleAsync(
         DiscordInteractionEnvelope interaction,
         CancellationToken cancellationToken)

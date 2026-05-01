@@ -45,7 +45,9 @@ public sealed class DiscordRestTelemetry : IDisposable
     /// </summary>
     public Counter<long> RateLimited { get; }
 
-    /// <inheritdoc />
+    /// <summary>
+    /// Disposes the telemetry sources associated with this REST client helper.
+    /// </summary>
     public void Dispose()
     {
         ActivitySource.Dispose();

@@ -22,7 +22,9 @@ public abstract class DiscordGatewayDispatchHandler<TPayload> : IDiscordGatewayD
     /// <inheritdoc />
     public virtual GatewayHandlerFailurePolicy FailurePolicy => GatewayHandlerFailurePolicy.Continue;
 
-    /// <inheritdoc />
+    /// <summary>
+    /// Determines whether the handler can process the supplied gateway dispatch envelope.
+    /// </summary>
     public virtual bool CanHandle(GatewayDispatchEnvelope envelope)
     {
         ArgumentNullException.ThrowIfNull(envelope);
@@ -31,7 +33,9 @@ public abstract class DiscordGatewayDispatchHandler<TPayload> : IDiscordGatewayD
             && envelope.Payload is TPayload;
     }
 
-    /// <inheritdoc />
+    /// <summary>
+    /// Handles a gateway dispatch envelope by validating the typed payload and delegating to the typed payload handler.
+    /// </summary>
     public async ValueTask<GatewayHandlerExecutionResult> HandleAsync(
         GatewayDispatchEnvelope envelope,
         CancellationToken cancellationToken)

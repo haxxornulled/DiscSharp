@@ -38,7 +38,9 @@ public sealed class DiscordInteractionRestClient : IDiscordInteractionRestClient
         _options.Validate();
     }
 
-    /// <inheritdoc />
+    /// <summary>
+    /// Creates the initial interaction callback response for the supplied interaction token.
+    /// </summary>
     public async ValueTask<DiscordInteractionCallbackResponse?> CreateInteractionResponseAsync(
         DiscordSnowflake interactionId,
         string interactionToken,
@@ -58,7 +60,9 @@ public sealed class DiscordInteractionRestClient : IDiscordInteractionRestClient
             .ConfigureAwait(false);
     }
 
-    /// <inheritdoc />
+    /// <summary>
+    /// Retrieves the original interaction response message.
+    /// </summary>
     public async ValueTask<DiscordWebhookMessage> GetOriginalResponseAsync(
         DiscordSnowflake applicationId,
         string interactionToken,
@@ -69,7 +73,9 @@ public sealed class DiscordInteractionRestClient : IDiscordInteractionRestClient
             .ConfigureAwait(false) ?? throw new InvalidOperationException("Discord returned an empty original interaction response.");
     }
 
-    /// <inheritdoc />
+    /// <summary>
+    /// Edits the original interaction response message.
+    /// </summary>
     public async ValueTask<DiscordWebhookMessage> EditOriginalResponseAsync(
         DiscordSnowflake applicationId,
         string interactionToken,
@@ -82,7 +88,9 @@ public sealed class DiscordInteractionRestClient : IDiscordInteractionRestClient
             .ConfigureAwait(false) ?? throw new InvalidOperationException("Discord returned an empty edited original interaction response.");
     }
 
-    /// <inheritdoc />
+    /// <summary>
+    /// Deletes the original interaction response message.
+    /// </summary>
     public async ValueTask DeleteOriginalResponseAsync(
         DiscordSnowflake applicationId,
         string interactionToken,
@@ -93,7 +101,9 @@ public sealed class DiscordInteractionRestClient : IDiscordInteractionRestClient
             .ConfigureAwait(false);
     }
 
-    /// <inheritdoc />
+    /// <summary>
+    /// Creates a followup message for the supplied interaction.
+    /// </summary>
     public async ValueTask<DiscordWebhookMessage> CreateFollowupMessageAsync(
         DiscordSnowflake applicationId,
         string interactionToken,
@@ -106,7 +116,9 @@ public sealed class DiscordInteractionRestClient : IDiscordInteractionRestClient
             .ConfigureAwait(false) ?? throw new InvalidOperationException("Discord returned an empty followup response.");
     }
 
-    /// <inheritdoc />
+    /// <summary>
+    /// Retrieves a followup message by message ID.
+    /// </summary>
     public async ValueTask<DiscordWebhookMessage> GetFollowupMessageAsync(
         DiscordSnowflake applicationId,
         string interactionToken,
@@ -118,7 +130,9 @@ public sealed class DiscordInteractionRestClient : IDiscordInteractionRestClient
             .ConfigureAwait(false) ?? throw new InvalidOperationException("Discord returned an empty followup response.");
     }
 
-    /// <inheritdoc />
+    /// <summary>
+    /// Edits a followup message by message ID.
+    /// </summary>
     public async ValueTask<DiscordWebhookMessage> EditFollowupMessageAsync(
         DiscordSnowflake applicationId,
         string interactionToken,
@@ -132,7 +146,9 @@ public sealed class DiscordInteractionRestClient : IDiscordInteractionRestClient
             .ConfigureAwait(false) ?? throw new InvalidOperationException("Discord returned an empty edited followup response.");
     }
 
-    /// <inheritdoc />
+    /// <summary>
+    /// Deletes a followup message by message ID.
+    /// </summary>
     public async ValueTask DeleteFollowupMessageAsync(
         DiscordSnowflake applicationId,
         string interactionToken,

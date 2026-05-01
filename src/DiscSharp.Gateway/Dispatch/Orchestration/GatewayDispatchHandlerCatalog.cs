@@ -30,7 +30,9 @@ public sealed class GatewayDispatchHandlerCatalog : IGatewayDispatchHandlerCatal
         _logger.LogInformation("Gateway dispatch handler catalog initialized with {HandlerCount} handlers", _handlers.Count);
     }
 
-    /// <inheritdoc />
+    /// <summary>
+    /// Finds all registered handlers that can process the supplied gateway dispatch envelope, ordered by execution priority.
+    /// </summary>
     public IReadOnlyList<IDiscordGatewayDispatchHandler> FindHandlers(GatewayDispatchEnvelope envelope)
     {
         ArgumentNullException.ThrowIfNull(envelope);
@@ -50,7 +52,9 @@ public sealed class GatewayDispatchHandlerCatalog : IGatewayDispatchHandlerCatal
         return matches;
     }
 
-    /// <inheritdoc />
+    /// <summary>
+    /// Produces a stable snapshot of the registered handler descriptors for diagnostics and discovery.
+    /// </summary>
     public IReadOnlyList<GatewayDispatchHandlerDescriptor> DescribeHandlers() =>
         _handlers.Select(static h => h.Describe()).ToArray();
 }

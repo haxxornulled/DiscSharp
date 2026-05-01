@@ -29,7 +29,9 @@ public readonly record struct DiscordSnowflake
     /// </summary>
     public static DiscordSnowflake FromUInt64(ulong value) => new(value.ToString(System.Globalization.CultureInfo.InvariantCulture));
 
-    /// <inheritdoc />
+    /// <summary>
+    /// Returns the canonical snowflake string value.
+    /// </summary>
     public override string ToString() => Value;
 
     /// <summary>

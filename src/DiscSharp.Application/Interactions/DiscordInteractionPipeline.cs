@@ -41,7 +41,10 @@ public sealed class DiscordInteractionPipeline : IDiscordInteractionPipeline
         _logger = logger;
     }
 
-    /// <inheritdoc />
+    /// <summary>
+    /// Executes the interaction pipeline until a module handles the interaction, the pipeline writes a fallback response,
+    /// or a module failure is converted into a failure response.
+    /// </summary>
     public async ValueTask<DiscordInteractionPipelineResult> ExecuteAsync(
         DiscordInteractionEnvelope interaction,
         CancellationToken cancellationToken)

@@ -44,6 +44,8 @@ public sealed record DiscordApiRoute
         return new Uri(options.VersionedBaseUri, relative);
     }
 
-    /// <inheritdoc />
+    /// <summary>
+    /// Returns the HTTP method and relative path in a human-readable route format.
+    /// </summary>
     public override string ToString() => $"{Method} /{Path}";
 }

@@ -32,7 +32,9 @@ public sealed class RaidManagerInteractionModule : IDiscordInteractionModule
     /// <inheritdoc />
     public int Order => 1_000;
 
-    /// <inheritdoc />
+    /// <summary>
+    /// Determines whether this module can handle the supplied Raid Manager interaction.
+    /// </summary>
     public bool CanHandle(DiscordInteractionEnvelope interaction)
     {
         ArgumentNullException.ThrowIfNull(interaction);
@@ -46,7 +48,9 @@ public sealed class RaidManagerInteractionModule : IDiscordInteractionModule
             && string.Equals(customId.Module, Module, StringComparison.Ordinal);
     }
 
-    /// <inheritdoc />
+    /// <summary>
+    /// Handles a Raid Manager interaction by validating the custom ID, invoking the application service, and mapping the result to a response.
+    /// </summary>
     public async ValueTask<InteractionModuleResult> HandleAsync(
         DiscordInteractionEnvelope interaction,
         CancellationToken cancellationToken)
