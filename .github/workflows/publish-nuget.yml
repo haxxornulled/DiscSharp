@@ -1,0 +1,62 @@
+name: Publish NuGet packages
+
+on:
+  push:
+    tags:
+      - "v*"
+
+permissions:
+  contents: read
+  id-token: write
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    environment: release
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 10.0.x
+
+      - name: Restore
+        run: dotnet restore ./src/DiscSharp/DiscSharp.csproj
+
+      - name: Pack
+        shell: bash
+        run: |
+          version="${GITHUB_REF_NAME#v}"
+          dotnet pack ./src/DiscSharp/DiscSharp.csproj \
+            -c Release \
+            -p:PackageVersion="$version" \
+            -o ./artifacts/packages
+
+      - name: Trusted Publishing login
+        id: nuget_login
+        uses: NuGet/login@v1
+        with:
+          user: haxxornulled
+
+      - name: Publish packages
+        shell: bash
+        run: |
+          version="${GITHUB_REF_NAME#v}"
+          api_key="${{ steps.nuget_login.outputs.NUGET_API_KEY }}"
+
+          packages=(
+            "./artifacts/packages/DiscSharp.Application.${version}.nupkg"
+            "./artifacts/packages/DiscSharp.Gateway.${version}.nupkg"
+            "./artifacts/packages/DiscSharp.Rest.${version}.nupkg"
+            "./artifacts/packages/DiscSharp.${version}.nupkg"
+          )
+
+          for package in "${packages[@]}"; do
+            dotnet nuget push "$package" \
+              --source https://api.nuget.org/v3/index.json \
+              --api-key "$api_key" \
+              --skip-duplicate
+          done
