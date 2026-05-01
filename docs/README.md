@@ -2,6 +2,8 @@
 
 DiscSharp is being built as an enterprise-grade .NET 10/C# Discord platform library: typed REST primitives, interaction callback/followup support, Gateway dispatch orchestration, an interaction pipeline, component/modal models, Autofac modules, OpenTelemetry hooks, and tests.
 
+If you arrived from [README.md](../README.md), this page is the doc map that keeps the onboarding path linear instead of requiring psychic powers.
+
 ## Start here
 
 | Document | Purpose |

@@ -1,6 +1,8 @@
 # Getting Started
 
-This guide wires the current DiscSharp surface into a real .NET host-style application. It assumes the projects are referenced from the current solution.
+This is the second stop in the onboarding path after [README.md](../../README.md): the README shows the map, and this guide turns that map into a host you can actually run.
+
+It wires the current DiscSharp surface into a real .NET host-style application and assumes the projects are referenced from the current solution.
 
 ## Requirements
 
@@ -11,7 +13,7 @@ This guide wires the current DiscSharp surface into a real .NET host-style appli
 - OpenTelemetry for traces and metrics.
 - A Discord application/bot token for live REST/Gateway smoke tests.
 
-## Project references
+## Step 1: reference the projects
 
 ```xml
 <ItemGroup>
@@ -23,9 +25,9 @@ This guide wires the current DiscSharp surface into a real .NET host-style appli
 </ItemGroup>
 ```
 
-Use only the packs your app needs.
+Use only the packs your app needs. The smaller the graph, the less archaeology your future self has to perform.
 
-## Minimal Autofac composition
+## Step 2: wire Autofac
 
 ```csharp
 using Autofac;
@@ -65,7 +67,7 @@ await using var container = builder.Build();
 
 The real host should also register pack service ports such as `IRaidManagerInteractionService` and `IMusicPlayerInteractionService`. Those are application-owned services, not Discord infrastructure.
 
-## appsettings.json
+## Step 3: configure the host
 
 ```json
 {
@@ -90,7 +92,7 @@ The real host should also register pack service ports such as `IRaidManagerInter
 }
 ```
 
-## First REST call shape
+## Step 4: make your first REST call
 
 ```csharp
 using DiscSharp.Rest.Interactions;
@@ -108,7 +110,7 @@ await client.CreateInteractionResponseAsync(
 
 Use `DeferChannelMessage(ephemeral: true)` when your handler cannot complete immediately.
 
-## First interaction module shape
+## Step 5: add an interaction module
 
 ```csharp
 using DiscSharp.Application.Interactions;
@@ -136,7 +138,7 @@ public sealed class HelpInteractionModule : IDiscordInteractionModule
 
 Register modules as `IDiscordInteractionModule` in Autofac. Feature packs already do this for their own modules.
 
-## Running tests
+## Step 6: run the build and tests
 
 ```powershell
 dotnet restore .\DiscSharp.slnx
@@ -144,7 +146,7 @@ dotnet build .\DiscSharp.slnx -c Release --no-restore
 dotnet test .\DiscSharp.slnx -c Release --no-build
 ```
 
-## What to build next in an app
+## Step 7: what to build next
 
 1. Register real `IRaidManagerInteractionService` / `IMusicPlayerInteractionService` implementations.
 2. Adapt your typed `INTERACTION_CREATE` DTO into `DiscordInteractionEnvelope` through `IInteractionEnvelopeFactory<TInteractionCreateEvent>`.

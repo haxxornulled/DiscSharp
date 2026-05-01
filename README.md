@@ -2,6 +2,10 @@
 
 DiscSharp is a .NET 10 / C# Discord library for people who enjoy strong typing, explicit composition roots, and not discovering architecture problems at 2:00 AM in production.
 
+[![.NET 10](https://img.shields.io/badge/.NET-10-512BD4?logo=dotnet&logoColor=white)](https://dotnet.microsoft.com/)
+[![GitHub](https://img.shields.io/badge/GitHub-haxxornulled%2FDiscSharp-181717?logo=github&logoColor=white)](https://github.com/haxxornulled/DiscSharp)
+[![Docs](https://img.shields.io/badge/docs-onboarding-0A7EA4)](docs/README.md)
+
 It is intentionally opinionated: REST primitives are typed, Gateway dispatch is orchestrated, interactions flow through an application pipeline, and the whole thing is built to be observable instead of mysterious.
 
 ## Why it exists
@@ -17,17 +21,19 @@ That means:
 - observability seams for logging, metrics, and tracing
 - tests that verify behavior instead of vibes
 
+## Start here
+
+If you want the shortest path from clone to working host, follow this order:
+
+1. Read [docs/README.md](docs/README.md) for the doc map and project shape.
+2. Follow [docs/guides/getting-started.md](docs/guides/getting-started.md) for the host wiring.
+3. Check [docs/architecture/status-and-roadmap.md](docs/architecture/status-and-roadmap.md) so you know what is implemented and what is still on the bench.
+
 ## Quickstart
 
-If you just want to get DiscSharp wired into a host, start here and then use the deeper docs for the parts that deserve more ceremony.
+The quickstart below is the same path, just compressed into a single page so you do not have to hop around if you are already in the zone.
 
-1. Install the `.NET 10 SDK`.
-2. Reference the projects you need.
-3. Register the DiscSharp modules in Autofac.
-4. Put your Discord settings in configuration.
-5. Run the solution with restore/build/test.
-
-### Project references
+### 1. Install and reference
 
 ```xml
 <ItemGroup>
@@ -41,7 +47,7 @@ If you just want to get DiscSharp wired into a host, start here and then use the
 
 Use only the packs your app actually needs. Your bot does not need to drag around the whole warehouse if it only ordered one shelf.
 
-### Minimal Autofac composition
+### 2. Wire Autofac
 
 ```csharp
 using Autofac;
@@ -80,7 +86,7 @@ await using var container = builder.Build();
 
 The application host still owns the concrete app services behind those packs, such as `IRaidManagerInteractionService` and `IMusicPlayerInteractionService`.
 
-### appsettings.json
+### 3. Configure the host
 
 ```json
 {
@@ -105,7 +111,7 @@ The application host still owns the concrete app services behind those packs, su
 }
 ```
 
-### First interaction module
+### 4. Add a first interaction module
 
 ```csharp
 using DiscSharp.Application.Interactions;
@@ -133,7 +139,7 @@ public sealed class HelpInteractionModule : IDiscordInteractionModule
 
 Register modules as `IDiscordInteractionModule` in Autofac. The feature packs already do this for their own modules.
 
-### Build and test
+### 5. Build and test
 
 ```powershell
 dotnet restore .\DiscSharp.slnx
@@ -149,18 +155,9 @@ dotnet test .\DiscSharp.slnx -c Release --no-build
 - `DiscSharp.InteractionPacks.RaidManager` and `DiscSharp.InteractionPacks.MusicPlayer` as feature-pack examples
 - tests that lock down routes, payloads, orchestration, and interaction behavior
 
-## Docs
+## Contributing
 
-Start here:
-
-1. [docs/README.md](docs/README.md)
-2. [docs/architecture/why-discsharp.md](docs/architecture/why-discsharp.md)
-3. [docs/guides/getting-started.md](docs/guides/getting-started.md)
-4. [docs/api/rest.md](docs/api/rest.md)
-5. [docs/api/gateway-orchestration.md](docs/api/gateway-orchestration.md)
-6. [docs/api/interactions.md](docs/api/interactions.md)
-7. [docs/api/components-and-modals.md](docs/api/components-and-modals.md)
-8. [docs/architecture/status-and-roadmap.md](docs/architecture/status-and-roadmap.md)
+See [CONTRIBUTING.md](CONTRIBUTING.md) for the shortest path to making changes without accidentally fighting the architecture.
 
 ## Current status
 
