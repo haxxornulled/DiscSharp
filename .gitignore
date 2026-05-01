@@ -1,25 +1,45 @@
-# Build output
+# OS clutter
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# IDE and editor state
+.vs/
+.vscode/
+.idea/
+*.suo
+*.user
+*.userosscache
+*.rsuser
+*.sln.docstates
+
+# .NET build output
 bin/
 obj/
 **/bin/
 **/obj/
-
-# Visual Studio / IDE state
-.vs/
-*.user
-*.suo
-*.userosscache
-*.sln.docstates
-
-# Test and diagnostic output
 TestResults/
+BenchmarkDotNet.Artifacts/
+artifacts/
+
+# Coverage, logs, and test artifacts
+*.coverage
+*.coveragexml
 *.trx
 *.log
+*.diag
 
 # Generated caches
 *.cache
 *.lscache
 
-# Local source bundles and archives
+# Local archives and bundles
 _source_artifacts/
 DiscSharp.zip
+*.nupkg
+*.snupkg
+
+# Temporary files
+*.tmp
+*.bak
+*.swp

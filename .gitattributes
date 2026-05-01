@@ -1,0 +1,9 @@
+* text=auto eol=lf
+
+# Keep common binaries and archives as-is.
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.pdf binary
+*.zip binary
