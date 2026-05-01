@@ -149,15 +149,23 @@ dotnet test .\DiscSharp.slnx -c Release --no-build
 
 ## NuGet
 
-The package story is not live yet, but the codebase is being shaped so NuGet publication is a boring future checkbox instead of a weekend excavation.
+The package build is alive locally: `DiscSharp` is the umbrella package, and the layer packages (`DiscSharp.Rest`, `DiscSharp.Gateway`, `DiscSharp.Application`) stay available for people who want the components instead of the whole tower.
 
-When the packages are ready, the install shape should be the usual:
+When the packages are published, the install shape is the usual:
 
 ```powershell
 dotnet add package DiscSharp
 ```
 
-If you are building from source right now, the repo still gives you the full shape:
+For local packing, use:
+
+```powershell
+dotnet pack .\DiscSharp.slnx -c Release
+```
+
+The packages land in `artifacts/packages`.
+
+If you want the lower-level pieces, the repo also ships as individual packages:
 
 - `DiscSharp.Rest` for Discord API v10 routes, interaction webhook shapes, and rate-limit primitives
 - `DiscSharp.Gateway` for typed Gateway dispatch orchestration

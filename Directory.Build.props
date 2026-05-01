@@ -7,5 +7,25 @@
     <AnalysisLevel>latest</AnalysisLevel>
     <Deterministic>true</Deterministic>
     <ContinuousIntegrationBuild Condition="'$(CI)' == 'true'">true</ContinuousIntegrationBuild>
+
+    <IsPackable Condition="'$(IsTestProject)' != 'true'">true</IsPackable>
+    <GenerateDocumentationFile Condition="'$(IsTestProject)' != 'true'">true</GenerateDocumentationFile>
+    <IncludeSymbols Condition="'$(IsTestProject)' != 'true'">true</IncludeSymbols>
+    <SymbolPackageFormat Condition="'$(IsTestProject)' != 'true'">snupkg</SymbolPackageFormat>
+    <PublishRepositoryUrl Condition="'$(IsTestProject)' != 'true'">true</PublishRepositoryUrl>
+    <RepositoryType Condition="'$(IsTestProject)' != 'true'">git</RepositoryType>
+    <RepositoryUrl Condition="'$(IsTestProject)' != 'true'">https://github.com/haxxornulled/DiscSharp</RepositoryUrl>
+    <PackageProjectUrl Condition="'$(IsTestProject)' != 'true'">https://github.com/haxxornulled/DiscSharp</PackageProjectUrl>
+    <Authors Condition="'$(IsTestProject)' != 'true'">haxxornulled</Authors>
+    <Company Condition="'$(IsTestProject)' != 'true'">DiscSharp</Company>
+    <PackageTags Condition="'$(IsTestProject)' != 'true'">discord;dotnet;csharp;autofac;gateway;rest;interactions</PackageTags>
+    <PackageReadmeFile Condition="'$(IsTestProject)' != 'true'">README.md</PackageReadmeFile>
+    <VersionPrefix Condition="'$(IsTestProject)' != 'true'">0.1.0</VersionPrefix>
+    <VersionSuffix Condition="'$(IsTestProject)' != 'true'">preview.1</VersionSuffix>
+    <PackageOutputPath Condition="'$(IsTestProject)' != 'true'">$(MSBuildThisFileDirectory)artifacts\packages</PackageOutputPath>
   </PropertyGroup>
+
+  <ItemGroup Condition="'$(IsPackable)' == 'true' and Exists('$(MSBuildThisFileDirectory)README.md')">
+    <None Include="$(MSBuildThisFileDirectory)README.md" Pack="true" PackagePath="" Visible="false" />
+  </ItemGroup>
 </Project>

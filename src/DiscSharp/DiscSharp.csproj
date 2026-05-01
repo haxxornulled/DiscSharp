@@ -1,0 +1,14 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <AssemblyName>DiscSharp</AssemblyName>
+    <RootNamespace>DiscSharp</RootNamespace>
+    <Description>Umbrella package for DiscSharp core Discord REST, Gateway, and interaction pipeline libraries.</Description>
+    <IncludeBuildOutput>false</IncludeBuildOutput>
+    <NoWarn>$(NoWarn);NU5128</NoWarn>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DiscSharp.Application\DiscSharp.Application.csproj" />
+    <ProjectReference Include="..\DiscSharp.Gateway\DiscSharp.Gateway.csproj" />
+    <ProjectReference Include="..\DiscSharp.Rest\DiscSharp.Rest.csproj" />
+  </ItemGroup>
+</Project>

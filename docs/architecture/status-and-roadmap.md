@@ -54,6 +54,11 @@ This document is intentionally blunt. DiscSharp should be transparent about what
 - App service ports for pack behavior.
 - Autofac modules for packs.
 
+### Packaging
+
+- NuGet packaging metadata for the source libraries and umbrella package.
+- Local `dotnet pack` output for `DiscSharp`, `DiscSharp.Rest`, `DiscSharp.Gateway`, `DiscSharp.Application`, and the interaction pack packages.
+
 ## In progress / next priority
 
 1. **REST endpoint expansion**: channels, messages, guilds, users, application commands, webhooks beyond interaction followups, audit-log reason support, multipart file upload.
@@ -74,7 +79,6 @@ This document is intentionally blunt. DiscSharp should be transparent about what
 - Multipart upload client.
 - OAuth2 flows.
 - Persistent state model.
-- Production package/nuspec metadata.
 - Public website docs generator.
 
 ## Quality gates before public preview
