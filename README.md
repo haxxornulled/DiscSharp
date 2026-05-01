@@ -165,7 +165,7 @@ dotnet pack .\DiscSharp.slnx -c Release
 
 The packages land in `artifacts/packages`.
 
-Publishing from GitHub Actions uses Trusted Publishing, so the workflow does not need a long-lived NuGet API key. The release job is in [`.github/workflows/publish-nuget.yml`](.github/workflows/publish-nuget.yml), and nuget.org needs a matching Trusted Publishing policy for that workflow file and the `release` environment.
+Publishing from GitHub Actions uses Trusted Publishing, so the workflow does not need a long-lived NuGet API key. The release job is in [`.github/workflows/build.yml`](.github/workflows/build.yml), and nuget.org needs a matching Trusted Publishing policy for that workflow file and the `production` environment.
 
 If you want the lower-level pieces, the repo also ships as individual packages:
 

@@ -30,7 +30,7 @@ dotnet test .\DiscSharp.slnx -c Release --no-build
 
 1. Bump the package version by tagging a release commit with a `v` prefix, for example `v0.1.0-preview.2`.
 2. Let the GitHub Actions release workflow publish from that tag.
-3. Make sure nuget.org has a Trusted Publishing policy for `.github/workflows/publish-nuget.yml` and the `release` environment.
+3. Make sure nuget.org has a Trusted Publishing policy for `.github/workflows/build.yml` and the `production` environment.
 4. Do not add long-lived NuGet API keys back into the repo. We are trying to be clever in a useful way, not a cursed way.
 
 ## Commit style
