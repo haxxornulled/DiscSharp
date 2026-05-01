@@ -10,7 +10,7 @@ It is intentionally opinionated: REST primitives are typed, Gateway dispatch is 
 
 ## Why it exists
 
-The goal is not to make Discord development louder. It is to make it boring in production, testable in CI, and legible to the next engineer who opens the repo after a long weekend.
+The goal is not to make Discord development louder. It is to make it boring in production, testable in local builds, and legible to the next engineer who opens the repo after a long weekend.
 
 That means:
 
@@ -147,7 +147,17 @@ dotnet build .\DiscSharp.slnx -c Release --no-restore
 dotnet test .\DiscSharp.slnx -c Release --no-build
 ```
 
-## What's in the box
+## NuGet
+
+The package story is not live yet, but the codebase is being shaped so NuGet publication is a boring future checkbox instead of a weekend excavation.
+
+When the packages are ready, the install shape should be the usual:
+
+```powershell
+dotnet add package DiscSharp
+```
+
+If you are building from source right now, the repo still gives you the full shape:
 
 - `DiscSharp.Rest` for Discord API v10 routes, interaction webhook shapes, and rate-limit primitives
 - `DiscSharp.Gateway` for typed Gateway dispatch orchestration
