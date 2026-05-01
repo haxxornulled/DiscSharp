@@ -1,0 +1,14 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <AssemblyName>DiscSharp.InteractionPacks.RaidManager</AssemblyName>
+    <RootNamespace>DiscSharp.InteractionPacks.RaidManager</RootNamespace>
+    <Description>Raid Manager interaction modules for DiscSharp application scenarios.</Description>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DiscSharp.Application\DiscSharp.Application.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Autofac" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" />
+  </ItemGroup>
+</Project>

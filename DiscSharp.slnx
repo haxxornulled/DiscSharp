@@ -1,0 +1,10 @@
+<Solution>
+  <Project Path="src\DiscSharp.Application\DiscSharp.Application.csproj" />
+  <Project Path="src\DiscSharp.Gateway\DiscSharp.Gateway.csproj" />
+  <Project Path="src\DiscSharp.Rest\DiscSharp.Rest.csproj" />
+  <Project Path="src\DiscSharp.InteractionPacks.RaidManager\DiscSharp.InteractionPacks.RaidManager.csproj" />
+  <Project Path="src\DiscSharp.InteractionPacks.MusicPlayer\DiscSharp.InteractionPacks.MusicPlayer.csproj" />
+  <Project Path="tests\DiscSharp.Application.Tests\DiscSharp.Application.Tests.csproj" />
+  <Project Path="tests\DiscSharp.Gateway.Tests\DiscSharp.Gateway.Tests.csproj" />
+  <Project Path="tests\DiscSharp.Rest.Tests\DiscSharp.Rest.Tests.csproj" />
+</Solution>

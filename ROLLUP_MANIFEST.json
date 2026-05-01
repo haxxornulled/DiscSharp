@@ -1,0 +1,37 @@
+{
+  "artifact": "DiscSharp_Documentation_Pass.zip",
+  "base": "DiscSharp_DiscordApiAlignment_Pass.zip generated from uploaded green DiscSharp.zip baseline",
+  "createdUtc": "2026-05-01T19:20:57Z",
+  "summary": "Adds product-grade API documentation for the current DiscSharp surface: positioning, getting started, Autofac composition, REST, Gateway orchestration, interactions, components/modals, observability, testing, examples, and roadmap/status.",
+  "projectsAdded": [
+    "src/DiscSharp.Rest/DiscSharp.Rest.csproj",
+    "tests/DiscSharp.Rest.Tests/DiscSharp.Rest.Tests.csproj"
+  ],
+  "solutionUpdated": "DiscSharp.slnx",
+  "excludedFromRollup": [
+    ".vs",
+    "bin",
+    "obj"
+  ],
+  "verification": {
+    "staticInspection": true,
+    "dotnetBuildRunHere": false,
+    "reasonBuildNotRunHere": "The execution container does not have the .NET SDK installed."
+  },
+  "docsAddedOrUpdated": [
+    "README.md",
+    "docs/README.md",
+    "docs/architecture/why-discsharp.md",
+    "docs/architecture/status-and-roadmap.md",
+    "docs/guides/getting-started.md",
+    "docs/guides/autofac-composition.md",
+    "docs/guides/observability.md",
+    "docs/guides/testing.md",
+    "docs/api/rest.md",
+    "docs/api/gateway-orchestration.md",
+    "docs/api/interactions.md",
+    "docs/api/components-and-modals.md",
+    "docs/examples/raid-manager.md",
+    "docs/examples/music-player.md"
+  ]
+}
